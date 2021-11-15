@@ -1,62 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { VictoryLine, VictoryChart, VictoryTheme } from 'victory';
-import { RTC_Parser } from '../JSONParser';
-import { dateFormatter } from '../dateConverter';
+import {ContextRTC} from "../config/contextAPI"
 function PeerConnectionsRTCInboundRTPVideoStream_FramesDecoded() {
-    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin]=useState([])
-    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg]=useState([])
-    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax]=useState([])
-
-    const upload = (e) => {
-        
-        // Convert the FileList into an array and iterate
-        Array.from(e.target.files).forEach(file => {
-            
-            // Define a new file reader
-            let reader = new FileReader();
-            
-            // Function to execute after loading the file
-            reader.onload = () => console.log(reader.result);
-            
-            // Read the file as a text
-            reader.readAsText(file);
-            
-        });
-    }
+ const{ 
+    showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin,
+    showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg,
+    showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax,
+    showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime,
+    
+  }=useContext(ContextRTC)
+  const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin]=showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin
+  const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg]=showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg
+  const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax]=showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax
+  const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime]=showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime
+  let MinArr=[]
+  let AvgArr=[]
+  let MaxArr=[]
+  let index=0
+  let strTag=[]
+  PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime.map((data)=>{
+    MinArr.push({x:data,y:PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin[index].toFixed(2)})
+    AvgArr.push({x:data,y:PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg[index].toFixed(2)})
+    MaxArr.push({x:data,y:PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax[index].toFixed(2)})
+    
+    strTag.push(
+    <tr>
+      <td>{data}</td>
+      <td>{PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax[index].toFixed(2)}</td>
+      <td>{PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg[index].toFixed(2)}</td>
+      <td>{PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin[index].toFixed(2)}</td>
+    </tr>)
+index++;
+  })
     return (
     <div>
         <h2 style={{backgroundColor:"purple",color:"white",height:"2vw"}}>PeerConnectionsRTCInboundRTPVideoStream_FramesDecoded</h2>
-        <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw" }}>
-        <div style={{"height" : "15vw", "width" : "15vw"}}>
+        <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw"}}>
+        <div style={{"height" : "15vw", "width" : "15vw",marginLeft:"3vw"}}>
         <VictoryChart
           theme={VictoryTheme.material}
+ 
         >
           <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc"}
+              data: { stroke: "red" },
+              parent: { border: "1px solid #ccc"},
+              
         
             }}
-            data={PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin}
+            
+            data={MinArr}
           />
             <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
+              data: { stroke: "green" },
               parent: { border: "1px solid #ccc"}
         
             }}
-            data={PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg}
+            data={AvgArr}
           />
               <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
+              data: { stroke: "black" },
               parent: { border: "1px solid #ccc"}
         
             }}
-            data={PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax}
+            data={MaxArr}
           />
         </VictoryChart>
-            <input onChange = {upload} type = 'file' multiple/>
+
+        </div>
+        <div>                
+          <table>
+            <tr>
+              <th>Time</th>
+              <th>Max</th>
+              <th>Avg</th>
+              <th>Min</th>
+            </tr> 
+            {strTag.map((data)=>{return data})}    
+          </table>
         </div>
         </div>
     </div>

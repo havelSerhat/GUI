@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {RTCContextAPI} from "./config/contextAPI"
+import {RTCProvider} from "./config/contextAPI"
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <RTCContextAPI>
+    <RTCProvider>
     <App />
-    </RTCContextAPI>
+    </RTCProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

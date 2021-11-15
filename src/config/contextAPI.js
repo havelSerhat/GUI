@@ -1,17 +1,215 @@
-import React, { createContext, useState } from "react";
+import React, { useState, createContext } from "react";
 
-const RTCContext = createContext(undefined);
+export const ContextRTC = createContext();
 
-// A "provider" is used to encapsulate only the
-// components that needs the state in this context
-export function RTCContextAPI({ children }) {
-    const [myFileContent, setMyFileContent] = useState({});
+export const RTCProvider = (props) => {
+    ///1
+    const [PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMin,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedAvg,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMax,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime]=useState([])
+    ///2
+    const [PeerConnectionsRTCInboundRTPAudioStream_JitterMin,setPeerConnectionsRTCInboundRTPAudioStream_JitterMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_JitterAvg,setPeerConnectionsRTCInboundRTPAudioStream_JitterAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_JitterMax,setPeerConnectionsRTCInboundRTPAudioStream_JitterMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_JitterTime,setPeerConnectionsRTCInboundRTPAudioStream_JitterTime]=useState([])
+    ///3
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsLostMin,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsLostAvg,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsLostMax,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime]=useState([])
+    ///4
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMin,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedAvg,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMax,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime]=useState([])
+    ///5
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameHeightMin,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameHeightAvg,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameHeightMax,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime]=useState([])
+    ///6
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime]=useState([])
+    ///7
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMin,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondAvg,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMax,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime]=useState([])
+    ///8
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameWidthMin,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameWidthAvg,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameWidthMax,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime]=useState([])
+    ///9
+    const [PeerConnectionsRTCInboundRTPVideoStream_JitterMin,setPeerConnectionsRTCInboundRTPVideoStream_JitterMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_JitterAvg,setPeerConnectionsRTCInboundRTPVideoStream_JitterAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_JitterMax,setPeerConnectionsRTCInboundRTPVideoStream_JitterMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_JitterTime,setPeerConnectionsRTCInboundRTPVideoStream_JitterTime]=useState([])
+    ///10
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsLostMin,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsLostAvg,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsLostMax,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime]=useState([])
+    ///11
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMin,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedAvg,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMax,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime]=useState([])
+    ///12
+    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime]=useState([])
+    ///13
+    const [PeerConnectionsRTCOutboundRTPAudioStream_PacketSentMin,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_PacketSentAvg,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_PacketSentMax,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime]=useState([])
+    ///14
+    const [PeerConnectionsRTCOutboundRTPAudioStream_RTTMin,setPeerConnectionsRTCOutboundRTPAudioStream_RTTMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_RTTAvg,setPeerConnectionsRTCOutboundRTPAudioStream_RTTAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_RTTMax,setPeerConnectionsRTCOutboundRTPAudioStream_RTTMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPAudioStream_RTTTime,setPeerConnectionsRTCOutboundRTPAudioStream_RTTTime]=useState([])
+    ///15
+    const [PeerConnectionsRTCOutboundRTPVideoStream_BytesSentMin,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_BytesSentAvg,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_BytesSentMax,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime]=useState([])
+    ///16
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMin,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMax,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime]=useState([])
+    ///17
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMin,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMax,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime]=useState([])
+    ///18
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMin,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMax,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime]=useState([])
+    ///19
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMin,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMax,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime]=useState([])
+    ///20
+    const [PeerConnectionsRTCOutboundRTPVideoStream_PacketSentMin,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_PacketSentAvg,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_PacketSentMax,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime]=useState([])
+    ///21
+    const [PeerConnectionsRTCOutboundRTPVideoStream_RTTMin,setPeerConnectionsRTCOutboundRTPVideoStream_RTTMin]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_RTTAvg,setPeerConnectionsRTCOutboundRTPVideoStream_RTTAvg]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_RTTMax,setPeerConnectionsRTCOutboundRTPVideoStream_RTTMax]=useState([])
+    const [PeerConnectionsRTCOutboundRTPVideoStream_RTTTime,setPeerConnectionsRTCOutboundRTPVideoStream_RTTTime]=useState([])
+    ///22
+    const [PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax]=useState([])
+    const [PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime]=useState([])
+
+
 
   return (
-    <RTCContext.Provider value={myFileContent}>
- 
-        {children}
-  
-    </RTCContext.Provider>
+    <ContextRTC.Provider
+      value={{
+        showPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMin:[PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMin,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMin],
+        showPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedAvg:[PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedAvg,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedAvg],
+        showPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMax:[PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMax,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMax],
+        showPeerConnectionsRTCInboundRTPAudioStream_JitterMin:[PeerConnectionsRTCInboundRTPAudioStream_JitterMin,setPeerConnectionsRTCInboundRTPAudioStream_JitterMin],
+        showPeerConnectionsRTCInboundRTPAudioStream_JitterAvg:[PeerConnectionsRTCInboundRTPAudioStream_JitterAvg,setPeerConnectionsRTCInboundRTPAudioStream_JitterAvg],
+        showPeerConnectionsRTCInboundRTPAudioStream_JitterMax:[PeerConnectionsRTCInboundRTPAudioStream_JitterMax,setPeerConnectionsRTCInboundRTPAudioStream_JitterMax],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsLostMin:[PeerConnectionsRTCInboundRTPAudioStream_PacketsLostMin,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostMin],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsLostAvg:[PeerConnectionsRTCInboundRTPAudioStream_PacketsLostAvg,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostAvg],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsLostMax:[PeerConnectionsRTCInboundRTPAudioStream_PacketsLostMax,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostMax],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMin:[PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMin,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMin],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedAvg:[PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedAvg,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedAvg],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMax:[PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMax,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameHeightMin:[PeerConnectionsRTCInboundRTPVideoStream_FrameHeightMin,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameHeightAvg:[PeerConnectionsRTCInboundRTPVideoStream_FrameHeightAvg,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameHeightMax:[PeerConnectionsRTCInboundRTPVideoStream_FrameHeightMax,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin:[PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg:[PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax:[PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMin:[PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMin,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondAvg:[PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondAvg,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMax:[PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMax,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameWidthMin:[PeerConnectionsRTCInboundRTPVideoStream_FrameWidthMin,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameWidthAvg:[PeerConnectionsRTCInboundRTPVideoStream_FrameWidthAvg,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameWidthMax:[PeerConnectionsRTCInboundRTPVideoStream_FrameWidthMax,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_JitterMin:[PeerConnectionsRTCInboundRTPVideoStream_JitterMin,setPeerConnectionsRTCInboundRTPVideoStream_JitterMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_JitterAvg:[PeerConnectionsRTCInboundRTPVideoStream_JitterAvg,setPeerConnectionsRTCInboundRTPVideoStream_JitterAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_JitterMax:[PeerConnectionsRTCInboundRTPVideoStream_JitterMax,setPeerConnectionsRTCInboundRTPVideoStream_JitterMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsLostMin:[PeerConnectionsRTCInboundRTPVideoStream_PacketsLostMin,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsLostAvg:[PeerConnectionsRTCInboundRTPVideoStream_PacketsLostAvg,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsLostMax:[PeerConnectionsRTCInboundRTPVideoStream_PacketsLostMax,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMin:[PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMin,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedAvg:[PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedAvg,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMax:[PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMax,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedMax],
+        showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin:[PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin],
+        showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg:[PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg],
+        showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax:[PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax],
+        showPeerConnectionsRTCOutboundRTPAudioStream_PacketSentMin:[PeerConnectionsRTCOutboundRTPAudioStream_PacketSentMin,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentMin],
+        showPeerConnectionsRTCOutboundRTPAudioStream_PacketSentAvg:[PeerConnectionsRTCOutboundRTPAudioStream_PacketSentAvg,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentAvg],
+        showPeerConnectionsRTCOutboundRTPAudioStream_PacketSentMax:[PeerConnectionsRTCOutboundRTPAudioStream_PacketSentMax,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentMax],
+        showPeerConnectionsRTCOutboundRTPAudioStream_RTTMin:[PeerConnectionsRTCOutboundRTPAudioStream_RTTMin,setPeerConnectionsRTCOutboundRTPAudioStream_RTTMin],
+        showPeerConnectionsRTCOutboundRTPAudioStream_RTTAvg:[PeerConnectionsRTCOutboundRTPAudioStream_RTTAvg,setPeerConnectionsRTCOutboundRTPAudioStream_RTTAvg],
+        showPeerConnectionsRTCOutboundRTPAudioStream_RTTMax:[PeerConnectionsRTCOutboundRTPAudioStream_RTTMax,setPeerConnectionsRTCOutboundRTPAudioStream_RTTMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_BytesSentMin:[PeerConnectionsRTCOutboundRTPVideoStream_BytesSentMin,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_BytesSentAvg:[PeerConnectionsRTCOutboundRTPVideoStream_BytesSentAvg,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_BytesSentMax:[PeerConnectionsRTCOutboundRTPVideoStream_BytesSentMax,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMin:[PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMin,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightAvg:[PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMax:[PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMax,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMin:[PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMin,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedAvg:[PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMax:[PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMax,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMin:[PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMin,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondAvg:[PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMax:[PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMax,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMin:[PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMin,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthAvg:[PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthAvg,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMax:[PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMax,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_PacketSentMin:[PeerConnectionsRTCOutboundRTPVideoStream_PacketSentMin,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_PacketSentAvg:[PeerConnectionsRTCOutboundRTPVideoStream_PacketSentAvg,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_PacketSentMax:[PeerConnectionsRTCOutboundRTPVideoStream_PacketSentMax,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentMax],
+        showPeerConnectionsRTCOutboundRTPVideoStream_RTTMin:[PeerConnectionsRTCOutboundRTPVideoStream_RTTMin,setPeerConnectionsRTCOutboundRTPVideoStream_RTTMin],
+        showPeerConnectionsRTCOutboundRTPVideoStream_RTTAvg:[PeerConnectionsRTCOutboundRTPVideoStream_RTTAvg,setPeerConnectionsRTCOutboundRTPVideoStream_RTTAvg],
+        showPeerConnectionsRTCOutboundRTPVideoStream_RTTMax:[PeerConnectionsRTCOutboundRTPVideoStream_RTTMax,setPeerConnectionsRTCOutboundRTPVideoStream_RTTMax],
+        showPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime:[PeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime,setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime],
+        showPeerConnectionsRTCInboundRTPAudioStream_JitterTime:[PeerConnectionsRTCInboundRTPAudioStream_JitterTime,setPeerConnectionsRTCInboundRTPAudioStream_JitterTime],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime:[PeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime,setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime],
+        showPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime:[PeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime,setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime:[PeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime,setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime:[PeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime,setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime:[PeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime,setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime:[PeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime,setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_JitterTime:[PeerConnectionsRTCInboundRTPVideoStream_JitterTime,setPeerConnectionsRTCInboundRTPVideoStream_JitterTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime:[PeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime,setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime:[PeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime,setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime],
+        showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime:[PeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime],
+        showPeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime:[PeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime,setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime],
+        showPeerConnectionsRTCOutboundRTPAudioStream_RTTTime:[PeerConnectionsRTCOutboundRTPAudioStream_RTTTime,setPeerConnectionsRTCOutboundRTPAudioStream_RTTTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime:[PeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime,setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime:[PeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime,setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime:[PeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime,setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime:[PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime,setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime:[PeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime,setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime:[PeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime,setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime],
+        showPeerConnectionsRTCOutboundRTPVideoStream_RTTTime:[PeerConnectionsRTCOutboundRTPVideoStream_RTTTime,setPeerConnectionsRTCOutboundRTPVideoStream_RTTTime],
+        showPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin:[PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin],
+        showPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg:[PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg],
+        showPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax:[PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax],
+        showPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime:[PeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime,setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime],
+      }}
+    >
+      {props.children}
+    </ContextRTC.Provider>
   );
-}
+};

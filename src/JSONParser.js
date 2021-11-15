@@ -4,7 +4,7 @@
 export const RTC_Parser=(myStr)=>{
 
 let PeerConnectionsFirst= Object.keys(myStr["PeerConnections"])[0]
-let PeerConnectionsSecond= Object.keys(myStr["PeerConnections"])[1] 
+// let PeerConnectionsSecond= Object.keys(myStr["PeerConnections"])[1] 
 let PeerConnectionsOutbound=myStr["PeerConnections"][PeerConnectionsFirst]["stats"]
 let PeerConnectionsInbound=myStr["PeerConnections"][PeerConnectionsFirst]["stats"]
 let jsonRTCValue={}

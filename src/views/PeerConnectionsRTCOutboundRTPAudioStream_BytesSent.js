@@ -1,62 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { VictoryLine, VictoryChart, VictoryTheme } from 'victory';
-import { RTC_Parser } from '../JSONParser';
-import { dateFormatter } from '../dateConverter';
+import {ContextRTC} from "../config/contextAPI"
 function PeerConnectionsRTCOutboundRTPAudioStream_BytesSent() {
-    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin]=useState([])
-    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg]=useState([])
-    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax]=useState([])
-
-    const upload = (e) => {
-        
-        // Convert the FileList into an array and iterate
-        Array.from(e.target.files).forEach(file => {
-            
-            // Define a new file reader
-            let reader = new FileReader();
-            
-            // Function to execute after loading the file
-            reader.onload = () => console.log(reader.result);
-            
-            // Read the file as a text
-            reader.readAsText(file);
-            
-        });
-    }
+  const {
+    showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin,
+    showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg,
+    showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax,
+    showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime,
+ 
+  
+  }=useContext(ContextRTC)
+  const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin]=showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin
+const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg]=showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg
+const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax]=showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax
+    const [PeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime,setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime]=showPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime
+    let MinArr=[]
+    let AvgArr=[]
+    let MaxArr=[]
+    let index=0
+    let strTag=[]
+    PeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime.map((data)=>{
+      MinArr.push({x:data,y:PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin[index].toFixed(2)})
+      AvgArr.push({x:data,y:PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg[index].toFixed(2)})
+      MaxArr.push({x:data,y:PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax[index].toFixed(2)})
+      
+      strTag.push(
+      <tr>
+        <td>{data}</td>
+        <td>{PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax[index].toFixed(2)}</td>
+        <td>{PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg[index].toFixed(2)}</td>
+        <td>{PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin[index].toFixed(2)}</td>
+      </tr>)
+  index++;
+    }) 
     return (
     <div>
         <h2 style={{backgroundColor:"purple",color:"white",height:"2vw"}}>PeerConnectionsRTCOutboundRTPAudioStream_BytesSent</h2>
-        <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw" }}>
-        <div style={{"height" : "15vw", "width" : "15vw"}}>
+        <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw"}}>
+        <div style={{"height" : "15vw", "width" : "15vw",marginLeft:"3vw"}}>
         <VictoryChart
           theme={VictoryTheme.material}
+ 
         >
           <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc"}
+              data: { stroke: "red" },
+              parent: { border: "1px solid #ccc"},
+              
         
             }}
-            data={PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMin}
+            
+            data={MinArr}
           />
             <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
+              data: { stroke: "green" },
               parent: { border: "1px solid #ccc"}
         
             }}
-            data={PeerConnectionsRTCOutboundRTPAudioStream_BytesSentAvg}
+            data={AvgArr}
           />
               <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
+              data: { stroke: "black" },
               parent: { border: "1px solid #ccc"}
         
             }}
-            data={PeerConnectionsRTCOutboundRTPAudioStream_BytesSentMax}
+            data={MaxArr}
           />
         </VictoryChart>
-            <input onChange = {upload} type = 'file' multiple/>
+
+        </div>
+        <div>                
+          <table>
+            <tr>
+              <th>Time</th>
+              <th>Max</th>
+              <th>Avg</th>
+              <th>Min</th>
+            </tr> 
+            {strTag.map((data)=>{return data})}    
+          </table>
         </div>
         </div>
     </div>

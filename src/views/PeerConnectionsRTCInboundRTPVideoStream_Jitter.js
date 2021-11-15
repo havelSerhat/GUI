@@ -1,62 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { VictoryLine, VictoryChart, VictoryTheme } from 'victory';
-import { RTC_Parser } from '../JSONParser';
-import { dateFormatter } from '../dateConverter';
+import {ContextRTC} from "../config/contextAPI"
 function PeerConnectionsRTCInboundRTPVideoStream_Jitter() {
-    const [PeerConnectionsRTCInboundRTPVideoStream_JitterMin,setPeerConnectionsRTCInboundRTPVideoStream_JitterMin]=useState([])
-    const [PeerConnectionsRTCInboundRTPVideoStream_JitterAvg,setPeerConnectionsRTCInboundRTPVideoStream_JitterAvg]=useState([])
-    const [PeerConnectionsRTCInboundRTPVideoStream_JitterMax,setPeerConnectionsRTCInboundRTPVideoStream_JitterMax]=useState([])
-
-    const upload = (e) => {
-        
-        // Convert the FileList into an array and iterate
-        Array.from(e.target.files).forEach(file => {
-            
-            // Define a new file reader
-            let reader = new FileReader();
-            
-            // Function to execute after loading the file
-            reader.onload = () => console.log(reader.result);
-            
-            // Read the file as a text
-            reader.readAsText(file);
-            
-        });
-    }
+  const {
+    showPeerConnectionsRTCInboundRTPVideoStream_JitterMin,
+    showPeerConnectionsRTCInboundRTPVideoStream_JitterAvg,
+    showPeerConnectionsRTCInboundRTPVideoStream_JitterMax,
+    showPeerConnectionsRTCInboundRTPVideoStream_JitterTime,
+  }=useContext(ContextRTC)
+  const [PeerConnectionsRTCInboundRTPVideoStream_JitterMin,setPeerConnectionsRTCInboundRTPVideoStream_JitterMin]=showPeerConnectionsRTCInboundRTPVideoStream_JitterMin
+  const [PeerConnectionsRTCInboundRTPVideoStream_JitterAvg,setPeerConnectionsRTCInboundRTPVideoStream_JitterAvg]=showPeerConnectionsRTCInboundRTPVideoStream_JitterAvg
+  const [PeerConnectionsRTCInboundRTPVideoStream_JitterMax,setPeerConnectionsRTCInboundRTPVideoStream_JitterMax]=showPeerConnectionsRTCInboundRTPVideoStream_JitterMax
+    const [PeerConnectionsRTCInboundRTPVideoStream_JitterTime,setPeerConnectionsRTCInboundRTPVideoStream_JitterTime]=showPeerConnectionsRTCInboundRTPVideoStream_JitterTime
+    let MinArr=[]
+    let AvgArr=[]
+    let MaxArr=[]
+    let index=0
+    let strTag=[]
+    PeerConnectionsRTCInboundRTPVideoStream_JitterTime.map((data)=>{
+      MinArr.push({x:data,y:PeerConnectionsRTCInboundRTPVideoStream_JitterMin[index].toFixed(2)})
+      AvgArr.push({x:data,y:PeerConnectionsRTCInboundRTPVideoStream_JitterAvg[index].toFixed(2)})
+      MaxArr.push({x:data,y:PeerConnectionsRTCInboundRTPVideoStream_JitterMax[index].toFixed(2)})
+      
+      strTag.push(
+      <tr>
+        <td>{data}</td>
+        <td>{PeerConnectionsRTCInboundRTPVideoStream_JitterMax[index].toFixed(2)}</td>
+        <td>{PeerConnectionsRTCInboundRTPVideoStream_JitterAvg[index].toFixed(2)}</td>
+        <td>{PeerConnectionsRTCInboundRTPVideoStream_JitterMin[index].toFixed(2)}</td>
+      </tr>)
+  index++;
+    }) 
     return (
     <div>
         <h2 style={{backgroundColor:"purple",color:"white",height:"2vw"}}>PeerConnectionsRTCInboundRTPVideoStream_Jitter</h2>
-        <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw" }}>
-        <div style={{"height" : "15vw", "width" : "15vw"}}>
+        <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw"}}>
+        <div style={{"height" : "15vw", "width" : "15vw",marginLeft:"3vw"}}>
         <VictoryChart
           theme={VictoryTheme.material}
+ 
         >
           <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc"}
+              data: { stroke: "red" },
+              parent: { border: "1px solid #ccc"},
+              
         
             }}
-            data={PeerConnectionsRTCInboundRTPVideoStream_JitterMin}
+            
+            data={MinArr}
           />
             <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
+              data: { stroke: "green" },
               parent: { border: "1px solid #ccc"}
         
             }}
-            data={PeerConnectionsRTCInboundRTPVideoStream_JitterAvg}
+            data={AvgArr}
           />
               <VictoryLine
             style={{
-              data: { stroke: "#c43a31" },
+              data: { stroke: "black" },
               parent: { border: "1px solid #ccc"}
         
             }}
-            data={PeerConnectionsRTCInboundRTPVideoStream_JitterMax}
+            data={MaxArr}
           />
         </VictoryChart>
-            <input onChange = {upload} type = 'file' multiple/>
+
+        </div>
+        <div>                
+          <table>
+            <tr>
+              <th>Time</th>
+              <th>Max</th>
+              <th>Avg</th>
+              <th>Min</th>
+            </tr> 
+            {strTag.map((data)=>{return data})}    
+          </table>
         </div>
         </div>
     </div>
