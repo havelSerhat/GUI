@@ -26,7 +26,7 @@ import PeerConnectionsRTCOutboundRTPVideoStream_PacketSent from "./views/PeerCon
 import PeerConnectionsRTCOutboundRTPVideoStream_RTT from "./views/PeerConnectionsRTCOutboundRTPVideoStream_RTT";
 import "./AppCSS.css"
 import {ContextRTC} from "./config/contextAPI"
-
+import {convertDateObj} from "./dateSorterHours"
 
 function App() {
   const {showPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedMin,
@@ -516,9 +516,14 @@ async function readFileAsData(file) {
         ////
         ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime.push(dateFormatter(jsonValues["PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond"]["endTime"])[1])
         let values18=jsonValues["PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond"]["values"]
-        values18=values18.substring(1,values18.length-1).split(",").slice(1).map((i) => Number(i))
+        let arrElementCheck=values18.substring(1,values18.length-1)
+        if(arrElementCheck.split(",").length==1)
+        values18=arrElementCheck.split(",").map((i) => Number(i))
+        else
+        values18=arrElementCheck.split(",").slice(1).map((i) => Number(i))
         let maxVal18=Math.max(...values18)
         let minVal18=Math.min(...values18)
+        console.log(jsonValues["PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond"])
         let avgVal18=values18.reduce((a, b) => (a + b))/values18.length;
         ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondMin.push(minVal18)
         ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondAvg.push(avgVal18)
@@ -637,31 +642,54 @@ async function readFileAsData(file) {
       setPeerConnectionsRTCOutboundRTPVideoStream_RTTAvg(ArrPeerConnectionsRTCOutboundRTPVideoStream_RTTAvg)
       setPeerConnectionsRTCOutboundRTPVideoStream_RTTMax(ArrPeerConnectionsRTCOutboundRTPVideoStream_RTTMax)
 
+      ArrPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime(ArrPeerConnectionsRTCInboundRTPAudioStream_BytesReceivedTime)
+      ArrPeerConnectionsRTCInboundRTPAudioStream_JitterTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPAudioStream_JitterTime(ArrPeerConnectionsRTCInboundRTPAudioStream_JitterTime)
+      ArrPeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime(ArrPeerConnectionsRTCInboundRTPAudioStream_PacketsLostTime)
+      ArrPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime(ArrPeerConnectionsRTCInboundRTPAudioStream_PacketsReceivedTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime(ArrPeerConnectionsRTCInboundRTPVideoStream_FrameHeightTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime(ArrPeerConnectionsRTCInboundRTPVideoStream_FramesDecodedTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime(ArrPeerConnectionsRTCInboundRTPVideoStream_FramesPerSecondTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime(ArrPeerConnectionsRTCInboundRTPVideoStream_FrameWidthTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_JitterTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_JitterTime(ArrPeerConnectionsRTCInboundRTPVideoStream_JitterTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime(ArrPeerConnectionsRTCInboundRTPVideoStream_PacketsLostTime)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime(ArrPeerConnectionsRTCInboundRTPVideoStream_PacketsReceivedTime)
+      ArrPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime(ArrPeerConnectionsRTCOutboundRTPAudioStream_BytesSentTime)
+      ArrPeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime(ArrPeerConnectionsRTCOutboundRTPAudioStream_PacketSentTime)
+      ArrPeerConnectionsRTCOutboundRTPAudioStream_RTTTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPAudioStream_RTTTime(ArrPeerConnectionsRTCOutboundRTPAudioStream_RTTTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_BytesSentTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_FrameHeightTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesEncodedTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecondTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_FramsWidthTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_PacketSentTime)
+      ArrPeerConnectionsRTCOutboundRTPVideoStream_RTTTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCOutboundRTPVideoStream_RTTTime(ArrPeerConnectionsRTCOutboundRTPVideoStream_RTTTime)
+      
 
       setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin(ArrPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMin)
       setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg(ArrPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedAvg)
       setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax(ArrPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedMax)
+      ArrPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime.sort((a,b)=>convertDateObj(a)-convertDateObj(b))
       setPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime(ArrPeerConnectionsRTCInboundRTPVideoStream_BytesReceivedTime)
   }
 return(

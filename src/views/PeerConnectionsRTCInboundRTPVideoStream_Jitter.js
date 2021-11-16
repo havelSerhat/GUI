@@ -35,7 +35,7 @@ function PeerConnectionsRTCInboundRTPVideoStream_Jitter() {
     <div>
         <h2 style={{backgroundColor:"purple",color:"white",height:"2vw"}}>PeerConnectionsRTCInboundRTPVideoStream_Jitter</h2>
         <div style={{ display: 'flex', textAlign: 'center', marginBottom:"3vw"}}>
-        <div style={{"height" : "15vw", "width" : "15vw",marginLeft:"3vw"}}>
+        <div style={{"height" : "15vw", "width" : "20vw"}}>
         <VictoryChart
           theme={VictoryTheme.material}
  

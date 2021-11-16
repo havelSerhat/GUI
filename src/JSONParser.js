@@ -10,17 +10,23 @@ let PeerConnectionsInbound=myStr["PeerConnections"][PeerConnectionsFirst]["stats
 let jsonRTCValue={}
 
 //Video Stream Outbound
-let PeerConnectionsRTCOutboundRTPVideoStream_BytesSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-bytesSent/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_BytesSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-bytesSent/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_BytesSent=PeerConnectionsRTCOutboundRTPVideoStream_BytesSent[PeerConnectionsRTCOutboundRTPVideoStream_BytesSent.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_BytesSent"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_BytesSent]
-let PeerConnectionsRTCOutboundRTPVideoStream_PacketSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-packetsSent/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_PacketSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-packetsSent/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_PacketSent=PeerConnectionsRTCOutboundRTPVideoStream_PacketSent[PeerConnectionsRTCOutboundRTPVideoStream_PacketSent.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_PacketSent"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_PacketSent]
-let PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-framesEncoded/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-framesEncoded/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded=PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded[PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_FramesEncoded]
-let PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-frameWidth/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-frameWidth/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth=PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth[PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_FramsWidth]
-let PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-frameHeight/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-frameHeight/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight=PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight[PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_FrameHeight]
-let PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-framesPerSecond/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPVideoStream_.*-framesPerSecond/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond=PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond[PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_FramesPerSecond]
 //Video Stream Inbound
 let PeerConnectionsRTCInboundRTPVideoStream_BytesReceived=Object.keys(PeerConnectionsInbound).filter((value)=>/^RTCInboundRTPVideoStream_.*-bytesReceived/.test(value))[Object.keys(PeerConnectionsInbound).filter((value)=>/^RTCInboundRTPVideoStream_.*-bytesReceived/.test(value)).length-1]
@@ -41,9 +47,11 @@ let PeerConnectionsRTCInboundRTPVideoStream_PacketsLost=Object.keys(PeerConnecti
 jsonRTCValue["PeerConnectionsRTCInboundRTPVideoStream_PacketsLost"]=PeerConnectionsInbound[PeerConnectionsRTCInboundRTPVideoStream_PacketsLost]
 
 //Audio Stream Outbound
-let PeerConnectionsRTCOutboundRTPAudioStream_BytesSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPAudioStream_.*-bytesSent/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPAudioStream_BytesSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPAudioStream_.*-bytesSent/.test(value))
+PeerConnectionsRTCOutboundRTPAudioStream_BytesSent=PeerConnectionsRTCOutboundRTPAudioStream_BytesSent[PeerConnectionsRTCOutboundRTPAudioStream_BytesSent.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPAudioStream_BytesSent"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPAudioStream_BytesSent]
-let PeerConnectionsRTCOutboundRTPAudioStream_PacketSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPAudioStream_.*-packetsSent/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPAudioStream_PacketSent=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCOutboundRTPAudioStream_.*-packetsSent/.test(value))
+PeerConnectionsRTCOutboundRTPAudioStream_PacketSent=PeerConnectionsRTCOutboundRTPAudioStream_PacketSent[PeerConnectionsRTCOutboundRTPAudioStream_PacketSent.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPAudioStream_PacketSent"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPAudioStream_PacketSent]
 
 //Audio Stream Inbound
@@ -57,9 +65,11 @@ let PeerConnectionsRTCInboundRTPAudioStream_Jitter=Object.keys(PeerConnectionsIn
 jsonRTCValue["PeerConnectionsRTCInboundRTPAudioStream_Jitter"]=PeerConnectionsInbound[PeerConnectionsRTCInboundRTPAudioStream_Jitter]
 
 //RTT Video and Audio Stream
-let PeerConnectionsRTCOutboundRTPAudioStream_RTT=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCRemoteInboundRtpAudioStream_.*-roundTripTime/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPAudioStream_RTT=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCRemoteInboundRtpAudioStream_.*-roundTripTime/.test(value))
+PeerConnectionsRTCOutboundRTPAudioStream_RTT=PeerConnectionsRTCOutboundRTPAudioStream_RTT[PeerConnectionsRTCOutboundRTPAudioStream_RTT.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPAudioStream_RTT"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPAudioStream_RTT]
-let PeerConnectionsRTCOutboundRTPVideoStream_RTT=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCRemoteInboundRtpVideoStream_.*-roundTripTime/.test(value))[0]
+let PeerConnectionsRTCOutboundRTPVideoStream_RTT=Object.keys(PeerConnectionsOutbound).filter((value)=>/^RTCRemoteInboundRtpVideoStream_.*-roundTripTime/.test(value))
+PeerConnectionsRTCOutboundRTPVideoStream_RTT=PeerConnectionsRTCOutboundRTPVideoStream_RTT[PeerConnectionsRTCOutboundRTPVideoStream_RTT.length-1]
 jsonRTCValue["PeerConnectionsRTCOutboundRTPVideoStream_RTT"]=PeerConnectionsOutbound[PeerConnectionsRTCOutboundRTPVideoStream_RTT]
 return jsonRTCValue
 }
